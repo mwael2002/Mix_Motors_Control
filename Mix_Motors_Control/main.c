@@ -33,15 +33,14 @@ void main(void){
 	Correct_ID=1111;
     Correct_password=4567;
 
-	//KPD_init();
+	KPD_init();
 	LCD_init();
-	LCD_write_no(25);
 
-   // log_in();
+    log_in();
 
 while(1){
-	LCD_write_no(25);
-    //Reconfigure();
+
+    Reconfigure();
 
 }
 }
@@ -66,7 +65,7 @@ void log_in(void){
 	Entered_ID=0;
 	Entered_password=0;
 
-	LCD_clear();
+	//LCD_clear();
 
 	LCD_write_string_pos("Enter ID",0,0);
 
