@@ -17,6 +17,7 @@
 
 U16 Correct_ID;
 U16 Correct_password;
+U8 Wrong_user_flag;
 
 void log_in(void);
 void Reconfigure(void);
@@ -40,8 +41,9 @@ void main(void){
 
 while(1){
 
+	if(Wrong_user_flag==0){
     Reconfigure();
-
+    }
 }
 }
 
@@ -58,6 +60,7 @@ void log_in(void){
     	LCD_write_string_pos("Wrong inputs",0,0);
     	LCD_write_string_pos("3 times, ALARM",1,0);
     	Buzzer_task();
+    	Wrong_user_flag=1;
     	return;
     }
 
@@ -65,7 +68,7 @@ void log_in(void){
 	Entered_ID=0;
 	Entered_password=0;
 
-	//LCD_clear();
+	LCD_clear();
 
 	LCD_write_string_pos("Enter ID",0,0);
 
@@ -225,8 +228,8 @@ void Servo_task(void){
 	}
 
 	if((angle>=0)&&(angle<180)){
-    Servo_init(Servo_Pin_2);
-    Servo_set_angle(Servo_Pin_2,angle);
+    Servo_init(Servo_Pin_1);
+    Servo_set_angle(Servo_Pin_1,angle);
 	}
 
 	else{
